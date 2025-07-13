@@ -150,9 +150,9 @@ const Header = () => {
                   </button>
 
                   <div className="mt-10 flex flex-col space-y-4">
-                    <div className="text-lg font-semibold text-gray-800 mb-4">
+                    {/* <div className="text-lg font-semibold text-gray-800 mb-4">
                       Hello, {user?.name || 'User'} 👋
-                    </div>
+                    </div> */}
                     <Link
                       to="/profile"
                       className="px-4 py-2 rounded hover:bg-gray-100 transition"

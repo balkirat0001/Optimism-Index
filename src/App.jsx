@@ -16,7 +16,8 @@ import OptimismTest from './pages/tests/optimism/OptimismTest';
 import LeapsTest from './pages/tests/leaps/LeapsTest';
 import NutritionTest from './pages/tests/nutrition/NutritionTest';
 import TestResults from './pages/TestResult';
-import ProfilePage from './pages/ProfilePage';
+import Profile from './pages/ProfilePage';
+import TestHistory from './pages/TestHistoryPage';
 import './App.css';
 
 function App() {
@@ -71,7 +72,13 @@ function App() {
             } />
             <Route path="/profile" element={
               <ProtectedRoute>
-                <ProfilePage />
+                <Profile />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/test-history" element={
+              <ProtectedRoute>
+                <TestHistory />
                 </ProtectedRoute>
               } />
             <Route path="/contact" element={<Contact />} />
