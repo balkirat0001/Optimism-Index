@@ -1,20 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Layout from '../components/Layout';
+import Layout from '../../../components/Layout';
 import { Apple, Clock, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 
-interface Answer {
-  questionId: number;
-  value: number;
-  timeSpent: number;
-}
+
 
 const NutritionTest = () => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [answers, setAnswers] = useState([]);
   const [timeLeft, setTimeLeft] = useState(20);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isComplete, setIsComplete] = useState(false);
 
   const questions = [
@@ -67,16 +63,16 @@ const NutritionTest = () => {
     setSelectedAnswer(null);
   }, [currentQuestion]);
 
-  const handleAnswerSelect = (value: number) => {
+  const handleAnswerSelect = (value) => {
     setSelectedAnswer(value);
   };
 
-  const handleNextQuestion = (answerValue?: number) => {
+  const handleNextQuestion = (answerValue) => {
     const finalAnswer = answerValue || selectedAnswer || 3;
     const timeSpent = 20 - timeLeft;
 
     // Save answer
-    const newAnswer: Answer = {
+    const newAnswer = {
       questionId: currentQuestion + 1,
       value: finalAnswer,
       timeSpent: timeSpent
@@ -89,7 +85,7 @@ const NutritionTest = () => {
     if (currentQuestion === questions.length - 1) {
       setIsComplete(true);
       const testResult = {
-        testType: 'nutrition' as const,
+        testType: 'nutrition' ,
         answers: updatedAnswers,
         completedAt: new Date().toISOString()
       };
@@ -283,3 +279,4 @@ const NutritionTest = () => {
 };
 
 export default NutritionTest;
+

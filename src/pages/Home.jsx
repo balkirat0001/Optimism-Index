@@ -9,7 +9,7 @@ const Home = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
@@ -221,7 +221,7 @@ const Home = () => {
               </div>
             </div>
             <blockquote className="text-2xl md:text-3xl text-gray-700 italic mb-8 font-medium leading-relaxed text-shimmer">
-              "The first psychometric tool designed to measure optimistic intelligence is viewed as a 
+              "The first psychometric tool designed to measure optimistic intelligence is viewed
               combination of different abilities that mental tests could measure. With the help of the 
               Optimistic Index Tool, industries can benefit by selecting the right resources."
             </blockquote>
@@ -233,3 +233,4 @@ const Home = () => {
 };
 
 export default Home;
+

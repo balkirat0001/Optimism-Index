@@ -3,11 +3,9 @@ import { ArrowUp } from 'lucide-react';
 import Header from './Header';
 import Footer from './Footer';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
 
-const Layout = ({ children }: LayoutProps) => {
+
+const Layout = ({ children }) => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -49,3 +47,4 @@ const Layout = ({ children }: LayoutProps) => {
 };
 
 export default Layout;
+

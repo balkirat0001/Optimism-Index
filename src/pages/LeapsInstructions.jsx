@@ -1,16 +1,16 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Layout from '../../../components/Layout';
-import { Brain, Clock, AlertCircle, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import Layout from '../components/Layout';
+import { Heart, Clock, AlertCircle, CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 
-const OptimismInstructions = () => {
+const LeapsInstructions = () => {
   const navigate = useNavigate();
   const [agreementChecked, setAgreementChecked] = useState(false);
 
   const handleStartTest = () => {
     if (agreementChecked) {
       // Navigate to actual test page (to be created)
-      navigate('/tests/optimism/questions');
+      navigate('/tests/leaps/questions');
     }
   };
 
@@ -19,14 +19,14 @@ const OptimismInstructions = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="bg-red-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-            <Brain className="h-10 w-10 text-red-600" />
+          <div className="bg-green-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+            <Heart className="h-10 w-10 text-green-600" />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            Optimism Index Test
+            LEAPS Wellbeing Test
           </h1>
           <p className="text-lg text-gray-600">
-            Measure your optimistic intelligence and positive outlook on life
+            Assess your overall wellbeing across multiple life dimensions
           </p>
         </div>
 
@@ -35,12 +35,12 @@ const OptimismInstructions = () => {
           <div className="bg-white rounded-lg shadow-md p-6 text-center border border-gray-200">
             <Clock className="h-8 w-8 text-blue-600 mx-auto mb-3" />
             <h3 className="font-semibold text-gray-900 mb-2">Duration</h3>
-            <p className="text-gray-600">20-25 minutes</p>
+            <p className="text-gray-600">25-30 minutes</p>
           </div>
           <div className="bg-white rounded-lg shadow-md p-6 text-center border border-gray-200">
             <CheckCircle className="h-8 w-8 text-green-600 mx-auto mb-3" />
             <h3 className="font-semibold text-gray-900 mb-2">Questions</h3>
-            <p className="text-gray-600">59 questions</p>
+            <p className="text-gray-600">61 questions</p>
           </div>
           <div className="bg-white rounded-lg shadow-md p-6 text-center border border-gray-200">
             <AlertCircle className="h-8 w-8 text-orange-600 mx-auto mb-3" />
@@ -52,7 +52,7 @@ const OptimismInstructions = () => {
         {/* Instructions */}
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <h2 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-            <AlertCircle className="h-6 w-6 text-red-600 mr-3" />
+            <AlertCircle className="h-6 w-6 text-green-600 mr-3" />
             INSTRUCTIONS
           </h2>
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
@@ -63,13 +63,13 @@ const OptimismInstructions = () => {
           
           <div className="space-y-6">
             <div className="flex items-start space-x-4">
-              <div className="bg-red-100 rounded-full p-2 flex-shrink-0 mt-1">
-                <span className="text-red-600 font-bold text-sm">1</span>
+              <div className="bg-green-100 rounded-full p-2 flex-shrink-0 mt-1">
+                <span className="text-green-600 font-bold text-sm">1</span>
               </div>
               <div>
                 <p className="text-gray-700 leading-relaxed">
                   It is best to take this test when you are <strong>relaxed and comfortable</strong>. 
-                  Like someone who has just returned from a restful holiday. As the directions will 
+                  Like someone who has just returned from a restful holiday.
                   indicate this is not a test with right or wrong answers. It is about confirming 
                   what you feel most of the time. <strong>There is no perfect profile.</strong>
                 </p>
@@ -77,8 +77,8 @@ const OptimismInstructions = () => {
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="bg-red-100 rounded-full p-2 flex-shrink-0 mt-1">
-                <span className="text-red-600 font-bold text-sm">2</span>
+              <div className="bg-green-100 rounded-full p-2 flex-shrink-0 mt-1">
+                <span className="text-green-600 font-bold text-sm">2</span>
               </div>
               <div>
                 <p className="text-gray-700 leading-relaxed">
@@ -88,8 +88,8 @@ const OptimismInstructions = () => {
             </div>
 
             <div className="flex items-start space-x-4">
-              <div className="bg-red-100 rounded-full p-2 flex-shrink-0 mt-1">
-                <span className="text-red-600 font-bold text-sm">3</span>
+              <div className="bg-green-100 rounded-full p-2 flex-shrink-0 mt-1">
+                <span className="text-green-600 font-bold text-sm">3</span>
               </div>
               <div>
                 <p className="text-gray-700 leading-relaxed mb-3">
@@ -97,19 +97,19 @@ const OptimismInstructions = () => {
                 </p>
                 <div className="ml-4 space-y-2">
                   <div className="flex items-start space-x-3">
-                    <span className="text-red-600 font-bold text-sm">3.1</span>
+                    <span className="text-green-600 font-bold text-sm">3.1</span>
                     <p className="text-gray-700">
                       Keep in mind that there are <strong>no right or wrong answers</strong>
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <span className="text-red-600 font-bold text-sm">3.2</span>
+                    <span className="text-green-600 font-bold text-sm">3.2</span>
                     <p className="text-gray-700">
                       Go with your <strong>first instinct</strong>—don't spend too much time on any one question
                     </p>
                   </div>
                   <div className="flex items-start space-x-3">
-                    <span className="text-red-600 font-bold text-sm">3.3</span>
+                    <span className="text-green-600 font-bold text-sm">3.3</span>
                     <p className="text-gray-700">
                       Remember that these questions measure what you feel <strong>most of the time</strong>
                     </p>
@@ -118,6 +118,39 @@ const OptimismInstructions = () => {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* LEAPS Specific Info */}
+        <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
+          <h3 className="text-lg font-semibold text-green-900 mb-3 flex items-center">
+            <Heart className="h-5 w-5 mr-2" />
+            About LEAPS Wellbeing Assessment
+          </h3>
+          <p className="text-green-800 mb-4">
+            LEAPS stands for the five key dimensions of wellbeing that this assessment measures:
+          </p>
+          <ul className="space-y-2 text-green-800">
+            <li className="flex items-start space-x-2">
+              <span className="text-green-600 font-bold">L</span>
+              <span><strong>Life Satisfaction:</strong> Overall contentment with your life</span>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="text-green-600 font-bold">E</span>
+              <span><strong>Emotional Balance:</strong> Managing emotions effectively</span>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="text-green-600 font-bold">A</span>
+              <span><strong>Achievement:</strong> Sense of accomplishment and progress</span>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="text-green-600 font-bold">P</span>
+              <span><strong>Positive Relationships:</strong> Quality of social connections</span>
+            </li>
+            <li className="flex items-start space-x-2">
+              <span className="text-green-600 font-bold">S</span>
+              <span><strong>Sense of Purpose:</strong> Meaning and direction in life</span>
+            </li>
+          </ul>
         </div>
 
         {/* Important Notes */}
@@ -129,7 +162,7 @@ const OptimismInstructions = () => {
           <ul className="space-y-2 text-blue-800">
             <li className="flex items-start space-x-2">
               <span className="text-blue-600">•</span>
-              <span>This assessment contains <strong>59 questions</strong> in total</span>
+              <span>This assessment contains <strong>30 questions</strong> in total</span>
             </li>
             <li className="flex items-start space-x-2">
               <span className="text-blue-600">•</span>
@@ -158,11 +191,11 @@ const OptimismInstructions = () => {
               id="agreement"
               checked={agreementChecked}
               onChange={(e) => setAgreementChecked(e.target.checked)}
-              className="h-5 w-5 text-red-600 focus:ring-red-500 border-gray-300 rounded mt-1"
+              className="h-5 w-5 text-green-600 focus:ring-green-500 border-gray-300 rounded mt-1"
             />
             <label htmlFor="agreement" className="text-gray-700 leading-relaxed">
               I understand the instructions and agree to complete this assessment honestly. 
-              I am in a relaxed state and ready to begin the Optimism Index Test.
+              I am in a relaxed state and ready to begin the LEAPS Wellbeing Test.
             </label>
           </div>
 
@@ -180,11 +213,11 @@ const OptimismInstructions = () => {
               disabled={!agreementChecked}
               className={`flex-1 flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors ${
                 agreementChecked
-                  ? 'bg-red-600 text-white hover:bg-red-700'
+                  ? 'bg-green-600 text-white hover:bg-green-700'
                   : 'bg-gray-300 text-gray-500 cursor-not-allowed'
               }`}
             >
-              Start Optimism Test
+              Start LEAPS Test
               <ArrowRight className="h-4 w-4 ml-2" />
             </button>
           </div>
@@ -194,4 +227,5 @@ const OptimismInstructions = () => {
   );
 };
 
-export default OptimismInstructions;
+export default LeapsInstructions;
+

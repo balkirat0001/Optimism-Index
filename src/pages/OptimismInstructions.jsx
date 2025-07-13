@@ -69,7 +69,7 @@ const OptimismInstructions = () => {
               <div>
                 <p className="text-gray-700 leading-relaxed">
                   It is best to take this test when you are <strong>relaxed and comfortable</strong>. 
-                  Like someone who has just returned from a restful holiday. As the directions will 
+                  Like someone who has just returned from a restful holiday.
                   indicate this is not a test with right or wrong answers. It is about confirming 
                   what you feel most of the time. <strong>There is no perfect profile.</strong>
                 </p>
@@ -195,3 +195,4 @@ const OptimismInstructions = () => {
 };
 
 export default OptimismInstructions;
+

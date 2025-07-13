@@ -1,51 +1,88 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../../components/Layout';
-import { Apple, Clock, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
+import { Heart, Clock, ArrowRight, ArrowLeft, CheckCircle } from 'lucide-react';
 
-interface Answer {
-  questionId: number;
-  value: number;
-  timeSpent: number;
-}
 
-const NutritionTest = () => {
+
+const LeapsTest = () => {
   const navigate = useNavigate();
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [answers, setAnswers] = useState([]);
   const [timeLeft, setTimeLeft] = useState(20);
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isComplete, setIsComplete] = useState(false);
 
   const questions = [
-    "I eat a variety of fruits and vegetables daily.",
-    "I am mindful of my portion sizes during meals.",
-    "I drink adequate amounts of water throughout the day.",
-    "I limit my intake of processed and junk foods.",
-    "I eat regular meals and avoid skipping breakfast.",
-    "I read nutrition labels when shopping for food.",
-    "I feel energized after eating my meals.",
-    "I listen to my body's hunger and fullness cues.",
-    "I include whole grains in my daily diet.",
-    "I limit my consumption of sugary drinks and snacks.",
-    "I plan my meals ahead of time.",
-    "I eat slowly and mindfully, not while distracted.",
-    "I include lean proteins in most of my meals.",
-    "I feel satisfied and not overly full after eating.",
-    "I limit my intake of fried and fatty foods.",
-    "I eat when I'm hungry, not when I'm emotional.",
-    "I include healthy fats (like nuts, avocado) in my diet.",
-    "I feel good about my relationship with food.",
-    "I cook meals at home regularly rather than eating out.",
-    "I maintain consistent energy levels throughout the day."
+    "I enjoy being in the company of my friends and family.",
+    "I am aware of my strengths.",
+    "I quickly adapt to the changing circumstances and environment.",
+    "My attitude is my strength towards achieving success in professional life.",
+    "I would like to actively participate in activities related to the betterment of society.",
+    "There are things that I am passionate about, in life, and like to pursue them.",
+    "I like to be up to date with all the latest developments in the field of my interests.",
+    "I am able to constantly evolve myself with the passage of time.",
+    "I have a strong social network that I can bank upon.",
+    "I believe that meditation is a way to attain peace.",
+    "I happily accept the life events as they come.",
+    "I am able to accomplish, even the challenging, tasks assigned to me.",
+    "I enjoy working in teams & communicate effectively.",
+    "My ambition and thirst for new knowledge pay dividends.",
+    "I am concerned about global unrest that may impact the global quality of life.",
+    "I can make new friends with ease.",
+    "I sometimes get distracted and miss the deadlines.",
+    "I believe that health and wellbeing are significant in social development and moral upliftment.",
+    "I feel energetic and enthusiastic, most of the time, during performing tasks related to my profession.",
+    "I have selfless concerns for the wellbeing of others.",
+    "My presence or absence does not matter to my friends.",
+    "I can, effortlessly, multitask in order to accomplish my goals.",
+    "I believe that social well-being contributes towards global development.",
+    "My choice of profession gives me great satisfaction.",
+    "I believe that enjoying the beauty of life leads to a more fulfilling life.",
+    "My friends often take me for granted.",
+    "My devotion and dedication to my responsibilities help me acquire new knowledge.",
+    "I am not confident in trying out new technologies.",
+    "I am able to have a sense of accomplishment in my work.",
+    "The works of great philosophers and thinkers inspire me.",
+    "I sometimes feel lonely and empty from within.",
+    "I set realistic goals and achieve them.",
+    "I get demotivated by obstacles that come in the way of my goals.",
+    "I look for significant others' approval for important decisions.",
+    "Integrity and honesty are my core strengths.",
+    "I feel my attitude helps me make right choices.",
+    "The purposefulness of tasks and goals accelerate my passion towards them.",
+    "I am not able to adapt to cultural differences with ease.",
+    "I am always strong willed in carrying out my responsibilities and doing the right thing.",
+    "I am sensitive to the hunger and poverty around me and, participate in social activities to lessen the sufferings.",
+    "I get tongue-tied and intimidated in the presence of new company.",
+    "I am able to confidently take decisions based on my knowledge and expertise.",
+    "I can take tough decisions calmly.",
+    "I am rarely satisfied with my accomplishments.",
+    "I derive satisfaction in serving the needy.",
+    "I can share my thoughts and feelings with people who are part of my life.",
+    "I am able to accept criticisms to improve myself.",
+    "I believe that every experience in life teaches us something that helps us evolve and grow.",
+    "I often get affected by pain and sufferings in life.",
+    "I get affected by people's opinion of me.",
+    "I am able to adapt to different styles of working in order to accomplish varied tasks.",
+    "I like to go with the flow and do not believe in planning.",
+    "Prayers give me inner strength to face difficult life's situation.",
+    "My close friends and family desire my company.",
+    "Failure in accomplishing a task demotivates me.",
+    "I am anxious about my prospects.",
+    "I am compassionate towards my surroundings.",
+    "I believe that my health affects my productivity in life.",
+    "I can remain calm in stressful situations to handle them.",
+    "I sometimes feel that good deeds are not very rewarding.",
+    "I love to develop new skills for future accomplishments."
   ];
 
   const responseOptions = [
-    { value: 1, label: "Never" },
-    { value: 2, label: "Rarely" },
-    { value: 3, label: "Sometimes" },
-    { value: 4, label: "Often" },
-    { value: 5, label: "Always" }
+    { value: 1, label: "Strongly Disagree" },
+    { value: 2, label: "Disagree" },
+    { value: 3, label: "Neutral" },
+    { value: 4, label: "Agree" },
+    { value: 5, label: "Strongly Agree" }
   ];
 
   // Timer effect
@@ -67,16 +104,16 @@ const NutritionTest = () => {
     setSelectedAnswer(null);
   }, [currentQuestion]);
 
-  const handleAnswerSelect = (value: number) => {
+  const handleAnswerSelect = (value) => {
     setSelectedAnswer(value);
   };
 
-  const handleNextQuestion = (answerValue?: number) => {
+  const handleNextQuestion = (answerValue) => {
     const finalAnswer = answerValue || selectedAnswer || 3;
     const timeSpent = 20 - timeLeft;
 
     // Save answer
-    const newAnswer: Answer = {
+    const newAnswer = {
       questionId: currentQuestion + 1,
       value: finalAnswer,
       timeSpent: timeSpent
@@ -89,11 +126,11 @@ const NutritionTest = () => {
     if (currentQuestion === questions.length - 1) {
       setIsComplete(true);
       const testResult = {
-        testType: 'nutrition' as const,
+        testType: 'leaps' ,
         answers: updatedAnswers,
         completedAt: new Date().toISOString()
       };
-      console.log('Nutrition Test completed!', testResult);
+      console.log('LEAPS Test completed!', testResult);
       // Navigate to results page
       setTimeout(() => {
         navigate('/tests/results', { state: { result: testResult } });
@@ -132,14 +169,14 @@ const NutritionTest = () => {
               <CheckCircle className="h-10 w-10 text-green-600" />
             </div>
             <h1 className="text-3xl font-bold text-gray-900 mb-4">
-              Nutrition Test Completed!
+              LEAPS Test Completed!
             </h1>
             <p className="text-lg text-gray-600 mb-8">
-              Thank you for completing the Nutrition Wellbeing Test. Redirecting to your results...
+              Thank you for completing the LEAPS Wellbeing Test. Redirecting to your results...
             </p>
             <button
               onClick={() => navigate('/tests')}
-              className="bg-orange-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-orange-700 transition-colors"
+              className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
             >
               Back to Tests
             </button>
@@ -154,11 +191,11 @@ const NutritionTest = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="bg-orange-100 rounded-full p-3 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-            <Apple className="h-8 w-8 text-orange-600" />
+          <div className="bg-green-100 rounded-full p-3 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+            <Heart className="h-8 w-8 text-green-600" />
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Nutrition Wellbeing Test
+            LEAPS Wellbeing Test
           </h1>
           <p className="text-gray-600">
             Question {currentQuestion + 1} of {questions.length}
@@ -173,7 +210,7 @@ const NutritionTest = () => {
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div 
-              className="bg-orange-600 h-2 rounded-full transition-all duration-300"
+              className="bg-green-600 h-2 rounded-full transition-all duration-300"
               style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
             ></div>
           </div>
@@ -192,7 +229,7 @@ const NutritionTest = () => {
         {/* Question */}
         <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
           <div className="mb-4">
-            <span className="text-sm font-medium text-orange-600 bg-orange-100 px-3 py-1 rounded-full">
+            <span className="text-sm font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">
               Question {currentQuestion + 1}
             </span>
           </div>
@@ -208,15 +245,15 @@ const NutritionTest = () => {
                 onClick={() => handleAnswerSelect(option.value)}
                 className={`w-full p-4 text-left rounded-lg border-2 transition-all duration-200 ${
                   selectedAnswer === option.value
-                    ? 'border-orange-500 bg-orange-50 text-orange-900'
-                    : 'border-gray-200 hover:border-orange-300 hover:bg-orange-50'
+                    ? 'border-green-500 bg-green-50 text-green-900'
+                    : 'border-gray-200 hover:border-green-300 hover:bg-green-50'
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <span className="font-medium">{option.label}</span>
                   <div className={`w-4 h-4 rounded-full border-2 ${
                     selectedAnswer === option.value
-                      ? 'border-orange-500 bg-orange-500'
+                      ? 'border-green-500 bg-green-500'
                       : 'border-gray-300'
                   }`}>
                     {selectedAnswer === option.value && (
@@ -263,7 +300,7 @@ const NutritionTest = () => {
             className={`flex items-center px-6 py-3 rounded-lg font-medium transition-colors ${
               selectedAnswer === null
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                : 'bg-orange-600 text-white hover:bg-orange-700'
+                : 'bg-green-600 text-white hover:bg-green-700'
             }`}
           >
             {currentQuestion === questions.length - 1 ? 'Complete Test' : 'Next'}
@@ -282,4 +319,5 @@ const NutritionTest = () => {
   );
 };
 
-export default NutritionTest;
+export default LeapsTest;
+

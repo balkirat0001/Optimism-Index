@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
@@ -21,7 +21,7 @@ import './App.css';
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <BrowserRouter>
         <div className="App">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -73,9 +73,10 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
           </Routes>
         </div>
-      </Router>
+      </BrowserRouter>
     </AuthProvider>
   );
 }
 
 export default App;
+

@@ -214,3 +214,4 @@ const Methodology = () => {
 };
 
 export default Methodology;
+

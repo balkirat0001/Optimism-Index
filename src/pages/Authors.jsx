@@ -65,7 +65,7 @@ const Authors = () => {
             <ul className="text-gray-700 space-y-2 text-sm">
               <li>• <strong>Award of Excellence</strong> from InSPA (Indian School Psychology Association) for contribution in psychology</li>
               <li>• <strong>2018 Greenbuild Leadership Award</strong> from US GBC for contribution towards sustainability</li>
-              <li>• <strong>PEROMA©</strong> Research model developed and registered as trademark</li>
+              <li>• <strong>PEROMA©</strong> Research model developed and registered</li>
               <li>• Fellow of prestigious <strong>Somatic Inkblot Society (FSIS–US)</strong></li>
             </ul>
           </div>
@@ -153,3 +153,4 @@ const Authors = () => {
 };
 
 export default Authors;
+

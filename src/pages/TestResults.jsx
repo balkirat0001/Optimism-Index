@@ -3,25 +3,15 @@ import Layout from '../components/Layout';
 import { Brain, Heart, Apple, ArrowLeft, Download, Share } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-interface TestResult {
-  testType: 'optimism' | 'leaps' | 'nutrition';
-  answers: Array<{
-    questionId: number;
-    value: number;
-    timeSpent: number;
-  }>;
-  completedAt: string;
-}
-
 const TestResults = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [result, setResult] = useState<TestResult | null>(null);
-  const [scores, setScores] = useState<any>(null);
+  const [result, setResult] = useState(null);
+  const [scores, setScores] = useState(null);
 
   useEffect(() => {
     if (location.state?.result) {
-      const testResult = location.state.result as TestResult;
+      const testResult = location.state.result;
       setResult(testResult);
       calculateScores(testResult);
     } else {
@@ -30,7 +20,7 @@ const TestResults = () => {
     }
   }, [location, navigate]);
 
-  const calculateScores = (testResult: TestResult) => {
+  const calculateScores = (testResult) => {
     const { answers, testType } = testResult;
     
     if (testType === 'optimism') {
@@ -42,7 +32,7 @@ const TestResults = () => {
     }
   };
 
-  const calculateOptimismScores = (answers: any[]) => {
+  const calculateOptimismScores = (answers) => {
     // Calculate Optimism Index scores based on 5 components
     const components = {
       PE: { name: 'Positive Emotions', questions: [1, 6, 16, 25, 27, 29, 40, 41, 42], score: 0 },
@@ -54,13 +44,13 @@ const TestResults = () => {
 
     // Calculate scores for each component
     Object.keys(components).forEach(key => {
-      const comp = components[key as keyof typeof components];
+      const comp = components[key];
       let totalScore = 0;
       let answeredQuestions = 0;
 
       comp.questions.forEach(qNum => {
         const answer = answers.find(a => a.questionId === qNum);
-        if (answer && answer.value !== 0) { // Skip questions marked as 0
+        if (answer && answer.value !== 0) { // Skip questions marked
           // Reverse scoring for negative questions (3, 7, 11, 13, 18, 21, 30, 32, 38, 39, 51, 52, 53, 54, 56, 57, 58)
           const negativeQuestions = [3, 7, 11, 13, 18, 21, 30, 32, 38, 39, 51, 52, 53, 54, 56, 57, 58];
           const score = negativeQuestions.includes(qNum) ? (6 - answer.value) : answer.value;
@@ -95,14 +85,14 @@ const TestResults = () => {
       type: 'optimism',
       compositeScore,
       optimismLevel,
-      colorInfo: colorMap[optimismLevel as keyof typeof colorMap],
+      colorInfo: colorMap[optimismLevel],
       components,
       totalAnswered: answers.filter(a => a.value !== 0).length,
       totalQuestions: answers.length
     });
   };
 
-  const calculateLeapsScores = (answers: any[]) => {
+  const calculateLeapsScores = (answers) => {
     // LEAPS scoring based on 5 components with specific question mappings
     const components = {
       LOVE: { 
@@ -175,7 +165,7 @@ const TestResults = () => {
 
     // Calculate scores for each component
     Object.keys(components).forEach(key => {
-      const comp = components[key as keyof typeof components];
+      const comp = components[key];
       let totalScore = 0;
       let answeredInComponent = 0;
       const negativeQuestions = [17, 21, 26, 28, 31, 33, 34, 38, 41, 44, 49, 50, 52, 55, 56, 60];
@@ -254,7 +244,7 @@ const TestResults = () => {
     });
   };
 
-  const calculateNutritionScores = (answers: any[]) => {
+  const calculateNutritionScores = (answers) => {
     // Nutrition scoring
     const totalScore = answers.reduce((sum, answer) => {
       return sum + (answer.value === 0 ? 0 : answer.value);
@@ -279,7 +269,7 @@ const TestResults = () => {
     });
   };
 
-  const getTestIcon = (type: string) => {
+  const getTestIcon = (type) => {
     switch (type) {
       case 'optimism': return <Brain className="h-8 w-8" />;
       case 'leaps': return <Heart className="h-8 w-8" />;
@@ -288,7 +278,7 @@ const TestResults = () => {
     }
   };
 
-  const getTestTitle = (type: string) => {
+  const getTestTitle = (type) => {
     switch (type) {
       case 'optimism': return 'Optimism Index Test';
       case 'leaps': return 'LEAPS Wellbeing Test';
@@ -424,7 +414,7 @@ const TestResults = () => {
             <div className="border-t pt-8">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Component Breakdown</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {Object.entries(scores.components).map(([key, component]: [string, any]) => (
+                {Object.entries(scores.components).map(([$1, $2]) => (
                   <div key={key} className="bg-gray-50 rounded-lg p-4">
                     <h4 className="font-semibold text-gray-900 mb-2">{component.name}</h4>
                     <div className="flex items-center justify-between">
@@ -452,7 +442,7 @@ const TestResults = () => {
             <div className="border-t pt-8">
               <h3 className="text-xl font-bold text-gray-900 mb-6">LEAPS Component Breakdown</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {Object.entries(scores.components).map(([key, component]: [string, any]) => (
+                {Object.entries(scores.components).map(([$1, $2]) => (
                   <div key={key} className="bg-gray-50 rounded-lg p-4">
                     <h4 className="font-semibold text-gray-900 mb-2">{component.name}</h4>
                     <div className="flex items-center justify-between">
@@ -556,7 +546,7 @@ const TestResults = () => {
                   </h4>
                   <p className="text-gray-700 text-sm">
                     Meaningfulness refers to a sense of purpose in life tasks giving the individual a feeling of 
-                    contributing to larger goals. It is a sense of intrinsic motivation serving as a driving force.
+                    contributing to larger goals. It is a sense of intrinsic motivation serving
                   </p>
                 </div>
               </div>
@@ -683,3 +673,4 @@ const TestResults = () => {
 };
 
 export default TestResults;
+

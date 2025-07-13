@@ -11,7 +11,7 @@ const Contact = () => {
     message: ''
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -19,7 +19,7 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
     console.log('Form submitted:', formData);
@@ -207,7 +207,7 @@ const Contact = () => {
                 Our Users Vouch For The Efficacy Of Our Psychometric Tool
               </h3>
               <p className="text-gray-700 leading-relaxed mb-4">
-                The first psychometric tool designed to measure optimistic intelligence is viewed as a 
+                The first psychometric tool designed to measure optimistic intelligence is viewed
                 combination of different abilities that mental tests could measure. With the help of the 
                 Optimistic Index Tool, industries can benefit by selecting the right resources.
               </p>
@@ -250,3 +250,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

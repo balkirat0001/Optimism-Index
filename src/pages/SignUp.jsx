@@ -69,7 +69,7 @@ const SignUp = () => {
     'Freelancer', 'Retired', 'Homemaker', 'Other'
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -92,7 +92,7 @@ const SignUp = () => {
     return null;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
     
@@ -506,3 +506,4 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
