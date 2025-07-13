@@ -167,13 +167,13 @@ const Header = () => {
                     >
                       📜 Test History
                     </Link>
-                    <Link
+                    {/* <Link
                       to="/test-results"
                       className="px-4 py-2 rounded hover:bg-gray-100 transition"
                       onClick={closeUserPanel}
                     >
                       📊 Test Results
-                    </Link>
+                    </Link> */}
                     <button
                       onClick={() => {
                         logout();
@@ -181,7 +181,7 @@ const Header = () => {
                       }}
                       className="px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600 transition"
                     >
-                      🚪 Logout
+                      Logout
                     </button>
                   </div>
                 </div>
