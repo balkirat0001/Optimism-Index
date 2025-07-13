@@ -6,9 +6,14 @@ import { useState } from 'react';
 const Header = () => {
   const { user, logout, isAuthenticated } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showUserPanel, setShowUserPanel] = useState(false); 
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeUserPanel = () => {
+    setShowUserPanel(false);
   };
 
   return (
@@ -84,7 +89,7 @@ const Header = () => {
           </div>
 
           {/* Login/User Section - Desktop */}
-          <div className="hidden md:flex items-center space-x-4">
+          {/* <div className="hidden md:flex items-center space-x-4">
             {isAuthenticated ? (
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-3 glass-morphism rounded-full px-4 py-2 animate-scaleIn">
@@ -110,7 +115,88 @@ const Header = () => {
               </Link>
             )}
           </div>
+        </div> */}
+        <div className="flex items-center space-x-4">
+            {isAuthenticated ? (
+              <>
+                {/* Circular User Icon */}
+                <button
+                  onClick={() => setShowUserPanel(true)}
+                  className="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full p-2 hover:scale-105 transition-transform"
+                >
+                  <User className="h-5 w-5 text-white" />
+                </button>
+
+                {/* Overlay (dark background) */}
+                {showUserPanel && (
+                  <div
+                    className="fixed inset-0 z-40"
+                    onClick={closeUserPanel}
+                  ></div>
+                )}
+
+                {/* Sliding User Panel */}
+                <div
+                  className={`fixed top-0 right-0 h-full w-64 bg-white !bg-white p-6 z-50 transform transition-transform duration-100 ${
+                    showUserPanel ? 'translate-x-0' : 'translate-x-full'
+                  }`}
+                  style={{ backgroundColor: 'white', opacity: 1 }}
+                >
+                  <button
+                    onClick={closeUserPanel}
+                    className="absolute top-4 right-4 text-gray-500 hover:text-gray-800 text-xl"
+                  >
+                    ✕
+                  </button>
+
+                  <div className="mt-10 flex flex-col space-y-4">
+                    <div className="text-lg font-semibold text-gray-800 mb-4">
+                      Hello, {user?.name || 'User'} 👋
+                    </div>
+                    <Link
+                      to="/profile"
+                      className="px-4 py-2 rounded hover:bg-gray-100 transition"
+                      onClick={closeUserPanel}
+                    >
+                      🧑 Profile
+                    </Link>
+                    <Link
+                      to="/test-history"
+                      className="px-4 py-2 rounded hover:bg-gray-100 transition"
+                      onClick={closeUserPanel}
+                    >
+                      📜 Test History
+                    </Link>
+                    <Link
+                      to="/test-results"
+                      className="px-4 py-2 rounded hover:bg-gray-100 transition"
+                      onClick={closeUserPanel}
+                    >
+                      📊 Test Results
+                    </Link>
+                    <button
+                      onClick={() => {
+                        logout();
+                        closeUserPanel();
+                      }}
+                      className="px-4 py-2 rounded bg-red-500 text-white hover:bg-red-600 transition"
+                    >
+                      🚪 Logout
+                    </button>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="bg-gradient-to-r from-red-500 to-pink-600 text-white px-6 py-2 rounded-full hover:from-red-600 hover:to-pink-700 transition-all duration-300 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 btn-interactive floating-element"
+              >
+                Login
+              </Link>
+            )}
+          </div>
         </div>
+
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
