@@ -1,9 +1,11 @@
 import { useAuth } from '../contexts/AuthContext';
 import { User, Edit, Save, X } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // ✅ import navigate
 
 const ProfilePage = () => {
   const { user } = useAuth();
+  const navigate = useNavigate(); // ✅ initialize navigate
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     fullName: user?.fullName || '',
@@ -27,6 +29,17 @@ const ProfilePage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 to-pink-100 p-8">
+
+      {/* ✅ Back to Home Button */}
+      <div className="max-w-5xl mx-auto mt-6 text-center">
+        <button
+          onClick={() => navigate('/')}
+          className="px-6 py-2 bg-gray-400 text-white rounded-full shadow hover:bg-gray-500 transition"
+        >
+          Back to Home
+        </button>
+      </div>
+      
       <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-2xl p-8 animate-fadeInUp relative">
         {/* Header */}
         <div className="flex items-center space-x-6 mb-8">
