@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { LogOut, User, Menu, X, Sparkles } from 'lucide-react';
 import { useState } from 'react';
+import { blue } from '@mui/material/colors';
 
 const Header = () => {
   const { user, logout, isAuthenticated } = useAuth();

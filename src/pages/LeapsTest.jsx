@@ -24,7 +24,7 @@ const LeapsTest = () => {
     "I am able to constantly evolve myself with the passage of time.",
     "I have a strong social network that I can bank upon.",
     "I believe that meditation is a way to attain peace.",
-    "I happily accept the life events,
+    "I happily accept the life events",
     "I am able to accomplish, even the challenging, tasks assigned to me.",
     "I enjoy working in teams & communicate effectively.",
     "My ambition and thirst for new knowledge pay dividends.",

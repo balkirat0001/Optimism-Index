@@ -20,7 +20,7 @@ const Authors = () => {
           <div className="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8">
             {/* Profile Image Placeholder */}
             <div className="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
-              <Users className="h-16 w-16 text-gray-400" />
+              <img src="https://iilm.edu.in/uploads/all/720/conversions/Dr-Padmakali-Banerjee-full.webp" alt="Author's Profile Image" className="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center"></img>
             </div>
             
             <div className="flex-1 text-center md:text-left">
